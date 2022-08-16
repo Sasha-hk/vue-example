@@ -26,7 +26,6 @@ const appConfig = {
   },
   computed: {
     doubleCountComputed() {
-      console.log('computes double count')
       return this.notes.length * 2;
     },
   },

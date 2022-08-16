@@ -9,14 +9,16 @@
 
   <body>
     <div id="app">
-      <h1>{{ title }}</h1>
+      <h1 :style="{
+        color: inputValue.length < 5 ? 'red' : 'blue'
+      }">{{ title }}</h1>
 
       <div class="form-control">
         <input
           type="text"
           :placeholder="inputPlaceholder"
           :value="inputValue"
-          @input="inputHandler"
+          v-model="inputValue"
           @keypress.Enter="addHandler"
         >
         <!-- v-bind:placeholder="inputPlaceholder"
@@ -48,8 +50,6 @@
       <div v-else>
         <h3>Notes not exists add new one</h3>
       </div>
-
-
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
