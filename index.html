@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+
+      <div class="form-control">
+        <input
+          type="text"
+          :placeholder="inputPlaceholder"
+          :value="inputValue"
+          @input="inputHandler"
+          @keypress.Enter="addHandler"
+        >
+        <!-- v-bind:placeholder="inputPlaceholder"
+        v-bind:value="inputValue"
+        v-on:input="inputHandler"
+        v-on:keypress.Enter="addHandler" -->
+      </div>
+
+      <button @click="addHandler" type="button">add</button>
+
+      <div v-if="notes.length !== 0">
+        <hr>
+
+        <ui class="list">
+          <li class="list-item" v-for="(note, i) in notes">
+            ({{ i + 1 }}) {{ upperCase(note) }}
+
+            <button
+              @click="deleteNote(i)"
+            >delete</button>
+          </li>
+        </ui>
+
+        <hr>
+
+        <b>General count of notes: {{ doubleCountComputed }}</b>
+      </div>
+
+      <div v-else>
+        <h3>Notes not exists add new one</h3>
+      </div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+
+  </body>
+</html>
