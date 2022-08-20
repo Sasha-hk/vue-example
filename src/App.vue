@@ -5,6 +5,7 @@
     ></post-form-vue>
     <post-list-vue
       :posts="posts"
+      @delete="deletePost"
     ></post-list-vue>
   </div>
 </template>
@@ -42,6 +43,9 @@ export default {
   methods: {
     createPost(newPost) {
       this.posts.push(newPost);
+    },
+    deletePost(post) {
+      this.posts = this.posts.filter(p => p.id !== post.id);
     }
   },
 }

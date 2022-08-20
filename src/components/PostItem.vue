@@ -6,7 +6,9 @@
     </div>
 
     <div class="post-buttons">
-      <my-button-vue>delete</my-button-vue>
+      <my-button-vue
+        @click="$emit('delete', post)"
+      >delete</my-button-vue>
     </div>
   </div>
 </template>

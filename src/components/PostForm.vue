@@ -3,18 +3,19 @@
     <form class="new-post" @submit.prevent>
       <h4>Create new post</h4>
 
-      <input
+      <my-input-vue
         v-model="post.title"
         class="input"
         type="text"
         placeholder="title"
-      >
-      <input
+      ></my-input-vue>
+
+      <my-input-vue
         v-model="post.body"
         class="input"
         type="text"
         placeholder="body"
-      >
+      ></my-input-vue>
 
       <my-button-vue
         @click="createPost"
@@ -38,11 +39,13 @@ export default {
     createPost() {
       this.post.id = Date.now();
 
-      this.$emit('create', this.post)
+      if (this.post.title && this.post.body) {
+        this.$emit('create', this.post)
 
-      this.post = {
-        title: '',
-        body: '',
+        this.post = {
+          title: '',
+          body: '',
+        }
       }
     },
   }
