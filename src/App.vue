@@ -1,30 +1,60 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="wrapper">
+    <post-form-vue
+      @create="createPost"
+    ></post-form-vue>
+    <post-list-vue
+      :posts="posts"
+    ></post-list-vue>
+  </div>
 </template>
 
+<script>
+import PostListVue from '@/components/PostList.vue';
+import PostFormVue from '@/components/PostForm.vue';
+
+export default {
+  components: {
+    PostListVue,
+    PostFormVue,
+  },
+  data() {
+    return {
+      posts: [
+        {
+          id: 0,
+          title: 'Title',
+          body: 'Body',
+        },
+        {
+          id: 1,
+          title: 'Title 1',
+          body: 'Body 1',
+        },
+        {
+          id: 2,
+          title: 'Title 2',
+          body: 'Body 2',
+        }
+      ],
+    }
+  },
+  methods: {
+    createPost(newPost) {
+      this.posts.push(newPost);
+    }
+  },
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.wrapper {
+  padding: 10px;
 }
 </style>
