@@ -1,6 +1,10 @@
 <template>
   <v-section class="notes-list">
-    <h2>Notes</h2>
+    <div class="heading">
+      <h2>Notes</h2>
+
+      <span>number of notes: {{ notes.length }}</span>
+    </div>
 
     <div
       v-if="notes.length !== 0"
@@ -44,10 +48,15 @@
   padding-top: 20px;
 }
 
-.notes-list > h2 {
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 10px;
 }
+
 .no-notes {
   color: rgba(0, 0, 0, 0.3);
 }
+
 </style>
