@@ -1,64 +1,34 @@
 <template>
-  <div class="wrapper">
-    <post-form-vue
-      @create="createPost"
-    ></post-form-vue>
-    <post-list-vue
-      :posts="posts"
-      @delete="deletePost"
-    ></post-list-vue>
-  </div>
+  <v-container>
+    <notes-vue />
+  </v-container>
 </template>
 
 <script>
-import PostListVue from '@/components/PostList.vue';
-import PostFormVue from '@/components/PostForm.vue';
+  import NotesVue from '@/components/note/Notes.vue';
 
-export default {
-  components: {
-    PostListVue,
-    PostFormVue,
-  },
-  data() {
-    return {
-      posts: [
-        {
-          id: 0,
-          title: 'Title',
-          body: 'Body',
-        },
-        {
-          id: 1,
-          title: 'Title 1',
-          body: 'Body 1',
-        },
-        {
-          id: 2,
-          title: 'Title 2',
-          body: 'Body 2',
-        }
-      ],
-    }
-  },
-  methods: {
-    createPost(newPost) {
-      this.posts.push(newPost);
+  export default {
+    components: {
+      NotesVue,
     },
-    deletePost(post) {
-      this.posts = this.posts.filter(p => p.id !== post.id);
-    }
-  },
-}
+  }
 </script>
 
 <style>
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
+
+  /* vars */
+  --base-color: green;
 }
 
-.wrapper {
-  padding: 10px;
+p,
+button,
+input,
+div {
+  font-size: 16px;
 }
 </style>

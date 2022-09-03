@@ -1,10 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import components from './components/UI';
 
-const app = createApp(App)
+import UiComponents from './components/'
 
-components.forEach((component) => {
+const app = createApp(App);
+
+UiComponents.forEach((component) => {
   app.component(component.name, component);
 });
 
