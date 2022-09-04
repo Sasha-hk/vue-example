@@ -3,7 +3,7 @@
     <div class="heading">
       <h2>Notes</h2>
 
-      <span>number of notes: {{ notes.length }}</span>
+      <small>number of notes: {{ notes.length }}</small>
     </div>
 
     <div
@@ -51,8 +51,12 @@
 .heading {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   margin-bottom: 10px;
+}
+
+.heading > small {
+  color: gray;
 }
 
 .no-notes {

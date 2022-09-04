@@ -1,14 +1,14 @@
 <template>
-  <v-section>
+  <v-container>
     <note-form-vue
       @createNote="createNote"
     />
 
     <notes-list-vue
-      :notes="notes"
+      :notes="$store.state.notes"
       @deleteNote="deleteNote"
     />
-  </v-section>
+  </v-container>
 </template>
 
 <script>
@@ -20,28 +20,23 @@
       NoteFormVue,
       NotesListVue,
     },
-    data() {
-      return {
-        notes: [],
-      }
-    },
     methods: {
-      deleteNote(note) {
-        this.notes = this.notes.filter((noteItem) => noteItem.id !== note.id);
-
-        window.localStorage.setItem('notes', JSON.stringify(this.notes));
-      },
       createNote(note) {
-        this.notes.unshift(note);
+        this.$store.commit('addNote', note);
 
-        window.localStorage.setItem('notes', JSON.stringify(this.notes));
+        window.localStorage.setItem('notes', JSON.stringify(this.$store.state.notes));
+      },
+      deleteNote(note) {
+        this.$store.commit('deleteNote', note);
+
+        window.localStorage.setItem('notes', JSON.stringify(this.$store.state.notes));
       },
     },
     mounted() {
       const notes = JSON.parse(window.localStorage.getItem('notes'))
 
-      if (notes) {
-        this.notes = notes;
+      if (Array.isArray(notes) && notes.length !== 0) {
+        return this.$store.commit('setNotes', notes);
       }
     },
   }
