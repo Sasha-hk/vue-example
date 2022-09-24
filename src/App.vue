@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <notes-vue />
-  </v-container>
+  <notes-vue />
 </template>
 
 <script>
@@ -20,15 +18,30 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
 
   /* vars */
   --base-color: green;
 }
 
-p,
-button,
-input,
-div {
+h1 {
+  font-size: 35px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 26px;
+  font-weight: 500;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+p {
   font-size: 16px;
+}
+
+small {
+  font-size: 14px;
 }
 </style>

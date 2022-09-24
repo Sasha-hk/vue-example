@@ -5,7 +5,7 @@
       class="note-form"
       @submit.prevent
     >
-      <h2 style="margin-bottom: 10px">Create note</h2>
+      <h1 style="margin-bottom: 10px">Create note</h1>
 
       <v-input
         v-model="note.title"
@@ -60,11 +60,22 @@ export default {
 .note-form {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
   margin: 0 auto;
 }
 
 .note-form > input {
   margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 461px) {
+  .note-form {
+    max-width: 300px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .note-form {
+    width: 100%;
+  }
 }
 </style>
